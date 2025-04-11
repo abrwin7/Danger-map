@@ -29,3 +29,39 @@
     </script>
 </body>
 </html>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Danger Map</title>
+    <!-- Ajouter le CSS de Leaflet -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <style>
+        #map {
+            height: 400px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Danger Map</h1>
+    <div id="map"></div>
+
+    <!-- Ajouter le script de Leaflet -->
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script>
+        // Initialiser la carte
+        var map = L.map('map').setView([48.8566, 2.3522], 13);  // Coordonnées de Paris, tu peux les changer
+
+        // Ajouter la carte de fond avec OpenStreetMap
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        // Ajouter un marqueur pour Paris (changer la position selon les dangers signalés)
+        L.marker([48.8566, 2.3522]).addTo(map)
+            .bindPopup("<b>Paris</b><br>Un danger signalé ici.")
+            .openPopup();
+    </script>
+</body>
+</html>
